@@ -9,20 +9,21 @@ placelist := RatPlaces(C); // includes all degree 1 places
 F<x,y> := FunctionField(C);
 Append(~placelist, Place([x^2-2*x+2,x-y]));
 
-// Computes Hecke graph information (type ?HeckeSearch for details)
-heckeinf := NewHeckeInfo(C);
-HeckeSearch(heckeinf, placelist); 
+// loads sample Hecke graph information
+load "SampleCurveData.m";
+heckeinf := newhecke;
+
+/* Computes Hecke graph information (type ?HeckeSearch for details).
+   WARNING: process takes several hours on a personal computer (use "tries"
+   parameter to proceed in batches).
+   Uncomment following lines if you're sure you want to use this. */
+
+// heckeinf := NewHeckeInfo(C);
+// HeckeSearch(heckeinf, placelist);
 
 // Print information about simultaneous eigenspaces
-ComputeEigenforms(heckeinf); // also stores data in heckeinf`eigenforms
+ComputeEigenforms(heckeinf); // may take several minutes
 
 load "InputOutput.m";
-ToMathematica(heckeinf, "adjacencymatrix.nb" : tag := "", Overwrite := false); //sends Hecke graphs to a Mathematica notebook
-
-
-/* Other capabilities:
-
-load "InputOutput.m";
-OutputHeckeData(heckeinf, "SampleCurveData.m" : prec := 30) // Saves heckeinfo to a file.
-load "SampleCurveData.m" // recovers heckeinfo, stored as variable "newhecke"
-*/
+ToMathematica(heckeinf, "adjacencymatrix.nb" : Overwrite := true); //sends Hecke graphs to a Mathematica notebook
+// OutputHeckeData(heckeinf, "SampleCurveData.m"); // Saves heckeinf to a file.

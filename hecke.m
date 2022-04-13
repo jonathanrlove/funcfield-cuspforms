@@ -230,7 +230,8 @@ intrinsic ComputeEigenforms(heckeinfo::HeckeInfo : status := 0, printeigens := t
     heckeinfo`eigenforms := SimulEigens(cuspformsupport, mats : status := status);
 
     if printeigens then
-        dims := [Dimension(eigenspace) : eigenspace in heckeinf`eigenforms];
+        Pol<x> := PolynomialRing(Rationals());
+        dims := [Dimension(eigenspace) : eigenspace in heckeinfo`eigenforms];
         if &*dims gt 1 then
             print "Simultaneous eigenspace dimensions too large: ", dims ,"Need Hecke operators at more places.";
         end if;
@@ -239,7 +240,7 @@ intrinsic ComputeEigenforms(heckeinfo::HeckeInfo : status := 0, printeigens := t
                 _, eigendata := IsSimultaneousEigenform(vect, heckeinfo);
                 for v in Keys(eigendata) do
                     print v;
-                    print AbsoluteMinimalPolynomial(modform[v]);
+                    print AbsoluteMinimalPolynomial(eigendata[v]);
                 end for;
             end for;
         end for;

@@ -48,7 +48,6 @@ procedure OutputHeckeData(heckeinfo, file : prec := 30, startcomment := "", Over
     printf "newhecke := New(HeckeInfo);\n";
     printf "newhecke`curve := C;\n";
     printf "newhecke`spaces := %o;\n", heckeinfo`spaces;
-    printf "newhecke`index := %o;\n", heckeinfo`index;
     printf "newhecke`slants := %o;\n", heckeinfo`slants;
     printf "newhecke`terminals := %o;\n\n", heckeinfo`terminals;
     printf "R<t> := LaurentSeriesRing(BaseRing(C));\n\n";
