@@ -13,7 +13,7 @@ Append(~placelist, Place([x^2-2*x+2,x-y]));
 load "SampleCurveData.m";
 heckeinf := newhecke;
 
-/* Computes Hecke graph information (type ?HeckeSearch for details).
+/* Computes Hecke graph information (type "HeckeSearch;" for details).
    WARNING: process takes several hours on a personal computer (use "tries"
    parameter to proceed in batches).
    Uncomment following lines if you're sure you want to use this. */
